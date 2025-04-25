@@ -10,10 +10,10 @@ namespace Consumers
 {
     class Program
     {
-        private const string connectionString = "Endpoint=sb://psynceventhubdemo.servicebus.windows.net/;SharedAccessKeyName=psync-receiver;SharedAccessKey=VUoLno9e1FkWDh0WNbUFnHUmjI23eG+kO+AEhMJro0M=;EntityPath=psync-demo";
-        private const string eventHubName = "psync-demo";
-        private const string blobStorageConnectionString = "DefaultEndpointsProtocol=https;AccountName=psync;AccountKey=tgb2m3kyf5ICEqfv+nRoc9ubJYcP0OM9JQSLRUbE1PHg6mzb6x1rbmMbt2J1LX6OQi7FWWwAsUkF+AStyns7vg==;EndpointSuffix=core.windows.net";
-        private const string blobContainerName = "psync-eventhub-checkpoints";
+        private const string connectionString = "";
+        private const string eventHubName = "";
+        private const string blobStorageConnectionString = "";
+        private const string blobContainerName = "";
         static async Task Main()
         {
             //Default consumer group name

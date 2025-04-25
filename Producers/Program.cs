@@ -9,8 +9,8 @@ namespace Producers
 
     class Program
     {
-        private const string connectionString = "Endpoint=sb://psynceventhubdemo.servicebus.windows.net/;SharedAccessKeyName=psync-sender;SharedAccessKey=80b9eexwp/7FcDFOEXxq8PoVh/F1YGD+5+AEhCbrrMY=;EntityPath=psync-demo";
-        private const string eventHubName = "psync-demo";
+        private const string connectionString = "";
+        private const string eventHubName = "";
         static async Task Main()
         {
             // Create a producer client that you can use to send events to an event hub
