@@ -1,0 +1,33 @@
+﻿using System;
+using System.Text;
+using System.Threading.Tasks;
+using Azure.Messaging.EventHubs;
+using Azure.Messaging.EventHubs.Producer;
+
+namespace Producers
+{
+
+    class Program
+    {
+        private const string connectionString = "Endpoint=sb://psynceventhubdemo.servicebus.windows.net/;SharedAccessKeyName=psync-sender;SharedAccessKey=80b9eexwp/7FcDFOEXxq8PoVh/F1YGD+5+AEhCbrrMY=;EntityPath=psync-demo";
+        private const string eventHubName = "psync-demo";
+        static async Task Main()
+        {
+            // Create a producer client that you can use to send events to an event hub
+            await using (var producerClient = new EventHubProducerClient(connectionString, eventHubName))
+            {
+                // Create a batch of events 
+                using EventDataBatch eventBatch = await producerClient.CreateBatchAsync();
+
+                // Add events to the batch. An event is a represented by a collection of bytes and metadata. 
+                eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("First event")));
+                eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second event")));
+                eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Third event")));
+
+                // Use the producer client to send the batch of events to the event hub
+                await producerClient.SendAsync(eventBatch);
+                Console.WriteLine("A batch of 3 events has been published.");
+            }
+        }
+    }
+}
